@@ -10,7 +10,7 @@ BookDZ is a small online bookstore built with React and Redux. Users can browse 
 
 No backend, authentication or payment system is included, as specified in the lab.
 
-**Live demo:** PUT-YOUR-LINK-HERE
+**Live demo:** https://bookdz-store.vercel.app/
 
 ## Technologies used
 
@@ -19,7 +19,7 @@ No backend, authentication or payment system is included, as specified in the la
 - Redux Toolkit and React-Redux
 - CSS3 (Flexbox, Grid, media queries)
 - Node.js / npm
-- Git and GitHub
+- Git, GitHub and Vercel
 
 ## Main React components
 
@@ -71,7 +71,3 @@ npm run dev
 ```
 
 Then open http://localhost:5173
-
-## Screenshots
-
-See the `screenshots/` folder.
