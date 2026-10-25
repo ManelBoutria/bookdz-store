@@ -8,7 +8,6 @@
 
 BookDZ is a small online bookstore built with React and Redux. Users can browse books, search and filter them by category, and manage a shopping cart (add, remove, change quantities, see the total). The cart is stored in a global Redux store, so the header, the product cards and the cart panel always stay in sync.
 
-No backend, authentication or payment system is included, as specified in the lab.
 
 **Live demo:** https://bookdz-store.vercel.app/
 
