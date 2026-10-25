@@ -1,7 +1,6 @@
 # BookDZ: Online Bookstore (React + Redux)
 
 **Student:** Manal Boutria
-**Module:** WAMD, ENSTA (TD-TP 2)
 **Store name:** BookDZ
 
 ## Description
