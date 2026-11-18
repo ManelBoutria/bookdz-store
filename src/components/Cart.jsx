@@ -1,30 +1,51 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { increase, decrease, removeFromCart, clearCart } from "../redux/cartSlice";
 
-function Cart({ open, onClose }) {
+function Cart({ open, onClose, onNavigate }) {
   const items = useSelector((state) => state.cart.items);
+  const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
+  const [done, setDone] = useState(false);
   const total = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
   if (!open) return null;
 
+  function handleClose() {
+    setDone(false);
+    onClose();
+  }
+
+  // Demo checkout: only a logged-in customer can buy
+  function handleCheckout() {
+    if (!user) {
+      handleClose();
+      onNavigate("login");
+      return;
+    }
+    dispatch(clearCart());
+    setDone(true);
+  }
+
   return (
     <>
-      <div className="overlay" onClick={onClose}></div>
+      <div className="overlay" onClick={handleClose}></div>
       <aside className="drawer">
         <div className="drawer-head">
           <h2>Your Cart</h2>
-          <button className="close" onClick={onClose}>✕</button>
+          <button className="close" onClick={handleClose}>✕</button>
         </div>
 
+        {done && <p className="success">Thank you! Your order was placed (demo).</p>}
+
         {items.length === 0 ? (
-          <p className="empty">Your cart is empty.</p>
+          !done && <p className="empty">Your cart is empty.</p>
         ) : (
           <>
             <div className="items">
               {items.map((i) => (
                 <div className="item" key={i.id}>
-                  <span className="item-emoji">{i.emoji}</span>
+                  <img className="item-img" src={i.imageUrl} alt={i.name} />
                   <div className="item-info">
                     <strong>{i.name}</strong>
                     <br />
@@ -46,7 +67,10 @@ function Cart({ open, onClose }) {
               <span>Total</span>
               <span>{total} DA</span>
             </div>
-            <button className="add-btn" onClick={() => dispatch(clearCart())}>
+            <button className="add-btn" onClick={handleCheckout}>
+              {user ? "Checkout" : "Login to checkout"}
+            </button>
+            <button className="add-btn secondary" onClick={() => dispatch(clearCart())}>
               Clear cart
             </button>
           </>

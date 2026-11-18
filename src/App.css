@@ -20,9 +20,10 @@ button { font-family: inherit; cursor: pointer; }
   display: flex; justify-content: space-between; align-items: center;
   padding: 1rem 1.5rem;
 }
-.logo { font-family: "Playfair Display", serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); text-decoration: none; }
+.logo { background: none; border: none; font-family: "Playfair Display", serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); text-decoration: none; }
 .header nav { display: flex; gap: 1.2rem; align-items: center; }
-.header .link { display: none; color: var(--cream); text-decoration: none; font-size: 0.9rem; }
+.header .link { background: none; border: none; color: var(--cream); font-size: 0.85rem; }
+.hello { font-size: 0.8rem; color: var(--gold); display: none; }
 .header .link:hover { color: var(--gold); }
 .cart-btn { background: var(--gold); color: var(--ink); border: none; border-radius: 999px; padding: 0.5rem 1.1rem; font-weight: 600; }
 
@@ -61,7 +62,7 @@ button { font-family: inherit; cursor: pointer; }
   display: flex; flex-direction: column;
 }
 .card:hover { transform: translateY(-6px); }
-.card-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; }
+.card-img { width: 100%; height: 220px; object-fit: cover; background: #eee; }
 .card-body { padding: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
 .card-cat { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: #888; }
 .card-author { color: #777; font-size: 0.9rem; }
@@ -84,7 +85,7 @@ button { font-family: inherit; cursor: pointer; }
 .close { background: none; border: none; font-size: 1.6rem; }
 .items { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.8rem; }
 .item { display: flex; align-items: center; gap: 0.8rem; background: #fff; border-radius: 12px; padding: 0.7rem; }
-.item-emoji { font-size: 2rem; }
+.item-img { width: 44px; height: 58px; object-fit: cover; border-radius: 6px; }
 .item-info { flex: 1; }
 .item-info small { color: #777; }
 .qty { display: flex; align-items: center; gap: 0.4rem; }
@@ -100,8 +101,30 @@ footer { background: var(--green); color: var(--cream); text-align: center; padd
 /* Tablet and desktop */
 @media (min-width: 700px) {
   .grid { grid-template-columns: repeat(2, 1fr); }
-  .header .link { display: inline; }
+  .hello { display: inline; }
 }
 @media (min-width: 1000px) {
   .grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+.add-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.add-btn.secondary { background: transparent; color: var(--green); border: 2px solid var(--green); margin-top: 0.5rem; }
+.error { color: #b3261e; }
+.success { background: #e3f0e6; color: var(--green); padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; }
+
+/* Login / Register */
+.auth { display: flex; justify-content: center; padding: 3rem 1.5rem; }
+.auth-box { background: #fff; border-radius: 18px; padding: 2rem; width: min(400px, 100%); display: flex; flex-direction: column; gap: 0.9rem; box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.auth-box input, .admin-form input, .admin-form select { padding: 0.7rem 1rem; border-radius: 10px; border: 2px solid var(--green); font-family: inherit; background: #fff; }
+.switch { font-size: 0.9rem; text-align: center; }
+.switch button { background: none; border: none; color: var(--green); font-weight: 600; text-decoration: underline; }
+
+/* Admin */
+.admin-form { display: grid; grid-template-columns: 1fr; gap: 0.7rem; background: #fff; padding: 1.2rem; border-radius: 18px; margin-bottom: 1.5rem; }
+.admin-list { display: flex; flex-direction: column; gap: 0.7rem; }
+.admin-row { display: flex; align-items: center; gap: 0.8rem; background: #fff; border-radius: 12px; padding: 0.7rem; }
+.admin-row img { width: 44px; height: 58px; object-fit: cover; border-radius: 6px; }
+.admin-info { flex: 1; display: flex; flex-direction: column; }
+.admin-info small { color: #777; }
+.chip.danger { border-color: #b3261e; color: #b3261e; }
+@media (min-width: 700px) { .admin-form { grid-template-columns: repeat(3, 1fr); } }
