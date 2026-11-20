@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
+import BookCover from "./BookCover";
 
 function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -14,13 +15,14 @@ function ProductCard({ product }) {
         name: product.name,
         price: product.price,
         imageUrl: product.imageUrl,
+        category: product.category,
       })
     );
   }
 
   return (
     <article className="card">
-      <img className="card-img" src={product.imageUrl} alt={product.name} />
+      <BookCover book={product} className="card-img" />
       <div className="card-body">
         <span className="card-cat">{product.category}</span>
         <h3>{product.name}</h3>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import BookCover from "./BookCover";
 import { increase, decrease, removeFromCart, clearCart } from "../redux/cartSlice";
 
 function Cart({ open, onClose, onNavigate }) {
@@ -45,7 +46,7 @@ function Cart({ open, onClose, onNavigate }) {
             <div className="items">
               {items.map((i) => (
                 <div className="item" key={i.id}>
-                  <img className="item-img" src={i.imageUrl} alt={i.name} />
+                  <BookCover book={i} className="item-img" />
                   <div className="item-info">
                     <strong>{i.name}</strong>
                     <br />

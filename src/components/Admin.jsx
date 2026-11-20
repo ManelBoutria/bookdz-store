@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { api } from "../api";
+import BookCover from "./BookCover";
 
 const empty = { name: "", description: "", price: "", category: "Novels", imageUrl: "", stock: "" };
 
@@ -83,7 +84,7 @@ function Admin() {
       <div className="admin-list">
         {products.map((p) => (
           <div className="admin-row" key={p._id}>
-            <img src={p.imageUrl} alt={p.name} />
+            <BookCover book={p} className="admin-cover" />
             <div className="admin-info">
               <strong>{p.name}</strong>
               <small>{p.category} · {p.price} DA · stock {p.stock}</small>

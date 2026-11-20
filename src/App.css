@@ -128,3 +128,7 @@ footer { background: var(--green); color: var(--cream); text-align: center; padd
 .admin-info small { color: #777; }
 .chip.danger { border-color: #b3261e; color: #b3261e; }
 @media (min-width: 700px) { .admin-form { grid-template-columns: repeat(3, 1fr); } }
+
+.cover-fallback { display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+.item-img.cover-fallback, .admin-cover.cover-fallback { font-size: 1.6rem; border-radius: 6px; }
+.admin-cover { width: 44px; height: 58px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
